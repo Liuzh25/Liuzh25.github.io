@@ -1,0 +1,495 @@
+custom_file_path:
+  head: source/_data/head.swig
+  #header: source/_data/header.swig
+  sidebar: source/_data/sidebar.swig
+  #postMeta: source/_data/post-meta.swig
+  postBodyEnd: source/_data/post-body-end.swig
+  footer: source/_data/footer.swig
+  bodyEnd: source/_data/body-end.swig
+  #variable: source/_data/variables.styl
+  #mixin: source/_data/mixins.styl
+  style: source/_data/styles.styl
+
+# ---------------------------------------------------------------
+# 网站信息设置
+# ---------------------------------------------------------------
+
+# 头像
+favicon:
+  small: /uploads/favicon-16x16-next.png
+  medium: /uploads/favicon-32x32-next.png
+  #apple_touch_icon: /images/apple-touch-icon-next.png
+  #safari_pinned_tab: /images/logo.svg
+  #android_manifest: /images/manifest.json
+  #ms_browserconfig: /images/browserconfig.xml
+
+# 页脚    
+footer:
+  # 指定网站设置的日期,如果没有定义，则使用当前时间.
+  since: 2021
+
+  # 图标,位于时间和版权信息之间.
+  icon:
+    name: fab fa-ravelry
+    # 如果你想要动画图标，设置它为true.
+    animated: true
+    # 改变图标的颜色，使用十六进制代码.
+    color: "#ff0000"
+  # 如果没有定义，将在Hexo主配置中使用' author '.
+  copyright: 机械细胞
+  
+  # 控制(由 Hexo 强力驱动)是否显示
+  powered: false
+
+#版权信息
+creative_commons:
+  license: by-nc-sa
+  sidebar: true
+  post: true
+  language: deed.zh
+
+  
+# ---------------------------------------------------------------
+# 布局设置
+# ---------------------------------------------------------------
+
+# 布局
+#scheme: Muse
+#scheme: Mist
+#scheme: Pisces
+scheme: Gemini
+
+# Dark Mode
+darkmode: true
+
+# ---------------------------------------------------------------
+# 菜单设置
+# ---------------------------------------------------------------
+
+# 菜单
+# 格式: `Key: /link/ || icon`
+menu:
+  home: / || fab fa-home
+  tags: /tags/ || fab fa-tags
+  categories: /categories/ || fab fa-categories
+  archives: /archives/ || fab fa-archive
+  videos: /videos/ || fab fa-video
+  music: /music/ || fab fa-music
+  photos: /photos/ || fab fa-photo
+  books: /books/ || fab fa-book
+  #schedule: /schedule/ || fab fa-calendar
+  #sitemap: /sitemap.xml || fab fa-sitemap
+  commonweal: /404/ || fab fa-commonweal
+  about: /about/ || fab fa-about
+
+# 启用/禁用菜单图标/项目徽章.
+menu_settings:
+  icons: true
+  badges: true
+
+
+# ---------------------------------------------------------------
+# 侧边栏设置
+# ---------------------------------------------------------------
+
+sidebar:
+  # 侧栏位置.
+  position: left
+  #position: right
+
+  # 自定义侧栏宽度,默认如下:Muse | Mist: 320  Pisces | Gemini: 240
+  #width: 300
+
+  # 侧栏顶部填充像素.
+  padding: 18
+  # 侧栏与菜单栏和文档的像素偏移
+  offset: 12
+
+# 侧栏头像
+avatar:
+  url: /uploads/avatar.jpeg
+  # 头像显示圆形.
+  rounded: true
+  # 鼠标放置时头像旋转.
+  rotated: true
+
+# 日志/分类/标签在侧边栏.
+site_state: false
+
+# 社交链接
+# 格式: `关键字: 链接 || 图标名`
+social:
+  GitHub: https://github.com/Liuzh25 || fa fa-github
+  E-Mail: 786189861@qq.com || fa fa-email
+  QQ: tencent://message/?uin=1095652242 || fa fa-qq
+  QQ对话: tencent://Message/?Uin=786189861&websiteName=www.oicqzone.com&Menu=yes || fa fa-qqduihua
+  CSDN: https://blog.csdn.net/qq_37828104 || fa fa-csdn
+  码云: https://gitee.com/Liuzh25 || fab fa-gitee
+  力扣: https://leetcode-cn.com/u/liuzh25/ || fab fa-leetcode
+  哔哩哔哩: https://space.bilibili.com/500942397 || fab fa-bilibili
+  知乎: https://www.zhihu.com/people/jin-li-22-85 || fa fa-zhihu
+  百度: http://www.baidu.com || fab fa-baidu
+
+# `enable` 控制是否显示图标 ,`icons_only` 控制是否隐藏关键字, `transition` 暂时不懂.
+social_icons:
+  enable: true
+  icons_only: false
+  transition: false
+
+# 友情链接
+links_settings:
+  icon: fab fa-link
+  title: 友情链接
+  # 链接排列方式
+  #layout: block
+  layout: inline
+  
+links:
+  野生程序员: http://www.yscxy.net/
+  又见苍岚: https://www.zywvvd.com/
+  小丁的个人博客: https://tding.top/
+  Moorez: http://shenzekun.cn/
+  橘子味雪糕: https://www.liuxianl.com/
+
+# 侧边栏目录
+toc:
+  enable: true
+  # 自动添加列表号到toc.
+  number: true
+  # 标题过长换行.
+  wrap: true
+  # 所有目录全部显示.
+  expand_all: false
+  # 最大标题深度.
+  max_depth: 6
+
+# ---------------------------------------------------------------
+# 站点设置
+# ---------------------------------------------------------------
+
+# 自动摘录描述在主页作为序言文本.
+excerpt_description: true
+
+# 显示阅读全文.
+read_more_btn: true
+
+# 文章数据显示
+post_meta:
+  item_text: true # 标题显示
+  created_at: true # 创建时间
+  updated_at: # 更新时间
+    enable: true
+    another_day: true
+  categories: true # 分类显示
+
+# 字数统计
+symbols_count_time:
+  separated_meta: true
+  item_text_post: true
+  item_text_total: true
+
+# 标签,使用图标代替符号#
+tag_icon: true
+
+# 打赏
+reward_settings:
+  enable: true
+  animation: false
+  #comment: 赞赏一杯咖啡
+
+reward:
+  alipay: /uploads/alipay.jpg
+  wechatpay: /uploads/wechatpay.jpg
+  #paypal: /images/paypal.png
+  #bitcoin: /images/bitcoin.png
+
+# 通过Telegram Channel、Twitter等订阅
+# 格式: `Key: permalink || icon` (Font Awesome)
+follow_me:
+  #Twitter: https://twitter.com/username || fab fa-twitter
+  #Telegram: https://t.me/channel_name || fab fa-telegram
+  WeChat:  /uploads/wechat-qcode.jpg || fab fa-weixin
+  #RSS: /atom.xml || fa fa-rss
+
+# 相关热门文章链接
+related_posts:
+  enable: false
+  title: # Custom header, leave empty to use the default one
+  display_in_home: false
+  params:
+    maxCount: 5
+    #PPMixingRate: 0.0
+    #isDate: false
+    #isImage: false
+    #isExcerpt: false
+
+# 文章编辑
+post_edit:
+  enable: true
+  url: https://github.com/Liuzh25/Liuzh25.github.io/tree/source # 查看源链接
+  #url: https://github.com/user-name/repo-name/edit/branch-name/subdirectory-name # 编辑链接分支
+
+# 显示前一篇文章和下一篇文章
+post_navigation: left
+#post_navigation: right
+#post_navigation: false
+
+# ---------------------------------------------------------------
+# 自定义页面设置
+# ---------------------------------------------------------------
+
+# 标签页标签云设置.
+tagcloud:
+  min: 12 # 字体最小 in px
+  max: 30 # 字体最大 in px
+  start: "#ccc" # 开始颜色 (hex, rgba, hsla or color keywords)
+  end: "#111" # 结束颜色 (hex, rgba, hsla or color keywords)
+  amount: 200 # 标签最大数量
+
+# 谷歌日历
+calendar:
+  calendar_id: # liuzhgq1995@gmail.com
+  api_key: # bGl1emhncTE5OTVAZ21haWwuY29t
+  orderBy: startTime
+  offsetMax: 24 # Time Range
+  offsetMin: 4 # Time Range
+  showDeleted: false
+  singleEvents: true
+  maxResults: 250
+  
+# ---------------------------------------------------------------
+# 杂项布局设置
+# ---------------------------------------------------------------
+
+# 设置文章/页面的文本对齐方式.
+text_align:
+  # 取值: start | end | left | right | center | justify | justify-all | match-parent
+  desktop: justify
+  mobile: justify
+
+# 缩小设备上的padding / margin缩进.
+mobile_layout_economy: false
+
+# Android Chrome header panel color ($brand-bg / $headband-bg => $black-deep).
+android_chrome_color: "#222"
+
+# 自定义Logo (不支持 scheme Mist)
+custom_logo: /uploads/custom-logo.jpg
+
+codeblock:
+  # 代码高亮主题
+  # 取值范围: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic
+  highlight_theme: normal
+  # 代码块复制按钮
+  copy_button:
+    enable: true
+    # 显示文本复制结果.
+    show_result: true
+    # 取值: default | flat | mac
+    style: mac
+
+back2top:
+  enable: true
+  # 在侧边栏显示返回顶部.
+  sidebar: false
+  # 返回顶部箭头显示百分比.
+  scrollpercent: true
+
+# 阅读进度条
+reading_progress:
+  enable: true
+  # 取值: top | bottom
+  position: top
+  color: "#FD6C6C"
+  height: 3px
+
+# 书签支持
+bookmark:
+  enable: true
+  # 自定义书签的颜色.
+  color: "#64CEAA"
+  # If auto, 关闭页面或单击书签图标时保存阅读进度.
+  # If manual, 只需点击书签图标来保存.
+  save: auto
+
+# GitHub corner.
+github_banner:
+  enable: true
+  permalink: https://github.com/Liuzh25
+  title: 欢迎访问我的GitHub主页
+  
+# ---------------------------------------------------------------
+# 第三方插件和服务设置
+# ---------------------------------------------------------------
+
+# 盘古支持,自动在中文和英文、数字、符号之间添加空格.
+# For more information: https://github.com/vinta/pangu.js
+pangu: true
+
+# 图片缩放.
+# For more information: https://github.com/francoischalifour/medium-zoom
+mediumzoom: true
+
+# 懒加载图像.
+# For more information: https://github.com/ApoorvSaxena/lozad.js
+lazyload: true
+
+# ---------------------------------------------------------------
+# 评论设置
+# ---------------------------------------------------------------
+
+# 多评论系统支持
+comments:
+  # 取值: tabs | buttons
+  style: tabs
+  # 选择默认显示的评论系统.
+  # 取值: changyan | disqus | disqusjs | gitalk | livere | valine
+  active: gitalk
+  # If true, 记住访客选择的评论系统.
+  storage: true
+  # 懒加载所有评论系统.
+  lazyload: true
+  # 修改文本或命令的任何navs.
+  nav:
+    #disqus:
+    #  text: Load Disqus
+    #  order: -1
+    #gitalk:
+    #  order: -2
+    
+# 畅言
+changyan:
+  enable: true
+  appid: cyvs0PiIk
+  appkey: a868a79f4480491e7870339ebcbcd8b7
+  comment: false
+  #post_meta_order: 0
+
+# Valine
+# For more information: https://valine.js.org, https://github.com/xCss/Valine
+valine:
+  enable: false
+  appid: S0ExOBWoQQYlRlqOT9dAhkTP-gzGzoHsz
+  appkey: 7EKLluWPKYoO83sAWtUnwu0H
+  notify: false # 邮件通知
+  verify: false # 验证码
+  placeholder: Just go go # 评论框占位符
+  avatar: mm # 个人风格
+  guest_info: nick,mail,link # Custom comment header
+  pageSize: 10 # Pagination size
+  language: # Language, available values: en, zh-cn
+  visitor: true # 文章阅读统计
+  comment_count: true # If false, 评论计数将只显示在发布页面，而不是主页
+  recordIP: true # 是否记录评论者IP
+  serverURLs: # When the custom domain name is enabled, fill it in here (it will be detected automatically by default, no need to fill in)
+  #post_meta_order: 0
+  
+# Gitalk评论系统
+# For more information: https://gitalk.github.io, https://github.com/gitalk/gitalk
+gitalk:
+  enable: true
+  github_id: Liuzh25 # GitHub用户名
+  repo: Liuzh25.github.io # 仓库名
+  client_id: 415feb380f28706a3d9e # GitHub Application Client ID
+  client_secret: 8e23474fec2292126310cebde51d90df21869e9e # GitHub Application Client Secret
+  admin_user: Liuzh25 # GitHub的回购所有者和合作者，只有这些人可以初始化GitHub问题
+  distraction_free_mode: true # 专注模式
+  # Gitalk的显示语言取决于用户的浏览器或系统环境
+  # 如果你想让每个访问你网站的人都看到统一的语言，你可以设置一个强制语言值
+  # 取值: en | es-ES | fr | ru | zh-CN | zh-TW
+  language: zh-CN
+
+# ---------------------------------------------------------------
+# 统计和分析
+# ---------------------------------------------------------------
+
+# Baidu Analytics
+baidu_analytics: 2f80625c255f4d995edcdcf2ad0a5201
+
+  
+# ---------------------------------------------------------------
+# 搜索服务
+# ---------------------------------------------------------------
+
+# 本地搜索
+local_search:
+  enable: true
+  # If auto, 则通过更改输入触发搜索.
+  # If manual, 按下输入键或搜索按钮触发搜索.
+  trigger: auto
+  # 每篇文章显示前n个结果，设置为-1显示所有结果
+  top_n_per_article: 1
+  # 将html字符串转换为可读字符串.
+  unescape: false
+  # P在页面加载时预加载搜索数据.
+  preload: false
+  
+# ---------------------------------------------------------------
+# 动画设置
+# ---------------------------------------------------------------
+
+# Progress bar in the top during page loading.
+# Dependencies: https://github.com/theme-next/theme-next-pace
+# For more information: https://github.com/HubSpot/pace
+pace:
+  enable: true
+  # Themes list:
+  # big-counter | bounce | barber-shop | center-atom | center-circle | center-radar | center-simple
+  # corner-indicator | fill-left | flat-top | flash | loading-bar | mac-osx | material | minimal
+  theme: bounce
+  
+# JavaScript 3D library.
+# Dependencies: https://github.com/theme-next/theme-next-three
+three:
+  enable: false
+  three_waves: true
+  canvas_lines: false
+  canvas_sphere: false  
+
+# ---------------------------------------------------------------
+# 个性化设置
+# ---------------------------------------------------------------
+  
+# 鼠标点击效果
+cursor_effect:
+  enabled: true
+  type: fireworks  # fireworks：礼花 | explosion：爆炸 | love：浮出爱心 | text：浮出文字
+  fairyDustCursor: true  # 鼠标跟随粒子特效
+
+# 文章内链接文本样式  
+post_body_a:
+  enabled: true
+  normal_color: "#0477ab"
+  hover_color: "#ff4500"
+  
+# 文章末尾添加“本文结束”标记
+passage_end_tag:
+  enabled: true
+  
+# 雪花飘落特效
+snow:
+  enabled: true
+  #type: hexo
+  #type: circle
+  type: sakura
+
+# 标签云
+tag_cloud:
+  enabled: true
+  textFont: Trebuchet MS, Helvetica
+  textColor: '#333'
+  textHeight: 25
+  outlineColor: '#E2E1D1'
+  maxSpeed: 0.5
+  pauseOnSelected: true # true 意味着当选中对应 tag 时,停止转动 
+  
+#心知天气
+weather_widget:
+  enabled: true
+  
+# 打字特效
+typing_effect:
+  enabled: true
+  colorful: true  # 礼花特效
+  shake: true  # 震动特效
+

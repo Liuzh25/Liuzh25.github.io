@@ -1,0 +1,268 @@
+/*图标的引用*/
+.fa-ravelry {
+  background: url(/iconfont/ravelry-red.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+.fa-home {
+  background: url(/iconfont/home-orange.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+.fa-about {
+  background: url(/iconfont/about-purple.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+.fa-commonweal {
+  background: url(/iconfont/commonweal-green.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+.fa-archive {
+  background: url(/iconfont/archive-blue.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+.fa-tags {
+  background: url(/iconfont/tags.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+.fa-categories {
+  background: url(/iconfont/categories.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+.fa-github {
+  background: url(/iconfont/github.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+.fa-email {
+  background: url(/iconfont/email.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+.fa-qq {
+  background: url(/iconfont/qq.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+.fa-baidu {
+  background: url(/iconfont/baidu.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+.fa-qqduihua {
+  background: url(/iconfont/qqduihua.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+.fa-zhihu {
+  background: url(/iconfont/zhihu.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+.fa-bilibili {
+  background: url(/iconfont/bilibili.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+.fa-csdn {
+  background: url(/iconfont/csdn.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+.fa-gitee {
+  background: url(/iconfont/gitee.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+.fa-leetcode {
+  background: url(/iconfont/leetcode.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+.fa-link {
+  background: url(/iconfont/link.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+.fa-video {
+  background: url(/iconfont/video.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+.fa-music {
+  background: url(/iconfont/music.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+.fa-photo {
+  background: url(/iconfont/photo.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+.fa-book {
+  background: url(/iconfont/book.svg);
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+
+/*github-corner*/
+.github-corner svg {
+  border: 0;
+  color: #fff;
+  fill: #FD6C6C;
+  position: absolute;
+  left: 0;
+  transform: scale(-1, 1);
+  top: 0;
+  z-index: 1000;
+}
+
+/*文章内链接文本样式*/
+if hexo-config("post_body_a.enabled")
+  .post-body
+    a {
+      color: convert(hexo-config("post_body_a.normal_color"));
+      border-bottom: none;
+      &:hover {
+        color: convert(hexo-config("post_body_a.hover_color"));
+        text-decoration: underline;
+		}
+    }
+
+/*小代码块的自定义样式*/	
+code {
+    color: #ff7600;
+    background: #fbf7f8;
+    margin: 2px;
+}
+.highlight, code {
+    border: 1px solid #d6d6d6;
+}
+
+/*自定义的侧栏时间样式*/
+#days {
+    display: block;
+    color: #19caad;
+    font-size: 14px;
+    margin-left: 15px;
+}
+
+/*文章标题下划线*/
+.posts-expand .post-title-link::before {
+	background-image: linear-gradient(90deg, #a166ab 0%, #ef4e7b 25%, #f37055 50%, #ef4e7b 75%, #a166ab 100%);
+}
+
+/*目录下划线*/
+a.nav-link {
+	border-bottom:0px
+}
+
+/*首字下沉*/
+.post-body>p:first-child::first-letter {
+  float: left;
+/* height: 32px;*/
+  margin-top: 14px;
+  margin-right: 6px;
+  color: #555;
+  font-size: 42px;
+  line-height: 28px;
+  font-style: normal;
+  font-weight: 400;
+  +mobile(){
+    margin-top: 10px;
+    margin-right: 4px;
+    font-size: 26px;
+    line-height: 20px;
+  }
+}
+
+/*添加背景图片*/
+body {
+      background: url(/uploads/background.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: 50% 50%;
+}
+
+/*代码折叠功能添加*/
+.hider_title {
+    cursor: pointer;
+    color: #ef4a05;
+}
+.close:before {
+    content: "▼";
+}
+.open:before {
+    content: "▲";
+}
