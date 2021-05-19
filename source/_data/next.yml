@@ -359,7 +359,7 @@ comments:
     
 # 畅言
 changyan:
-  enable: true
+  enable: false
   appid: cyvs0PiIk
   appkey: a868a79f4480491e7870339ebcbcd8b7
   comment: false
@@ -492,4 +492,6 @@ typing_effect:
   enabled: true
   colorful: true  # 礼花特效
   shake: true  # 震动特效
+  
+
 

@@ -2157,9 +2157,11 @@ passage_end_tag:
 ## 添加「APlayer音乐播放器」
 
 ### download
+
 点击访问Aplayer源码：[GitHub Aplayer](https://github.com/MoePlayer/APlayer)。下载到本地，解压后将dist文件夹复制到`/mybolg/source`文件夹下并重命名为`aplayer`。
 
 ### music.js
+
 新建`/mybolg/source/dist/music.js`文件，添加内容：
 
 ```js
@@ -2206,10 +2208,48 @@ audio对应的便是音频文件，所以音乐播放器需要播放的音乐是
 <script type="text/javascript" src="/aplayer/music.js"></script>
 ```
 
-### 参考:
+### 进阶修改
+
+编辑`body-end.swig`,更改代码为
+
+```html
+{# 音乐播放器 #}
+<link rel="stylesheet" href="/aplayer/APlayer.min.css">
+<div id="aplayer" class="aplayer"  data-id="2673736708" data-server="netease" data-type="playlist" data-fixed="true" data-listfolded="true" data-order="random" data-theme="#F58EA8"></div>
+
+<script type="text/javascript" src="/aplayer/APlayer.min.js"></script>
+<script src="https://unpkg.com/meting@1.2/dist/Meting.min.js"></script>
+```
+
+
+
+###参考:
 
 1. [hexo4.0 - Next7.2.4 主题优化配置_xiaohu的博客-CSDN博客](https://xiaohu.blog.csdn.net/article/details/102677424?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-12.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-12.control#t28)
 2. [APlayer 中文文档](https://aplayer.js.org/#/zh-Hans/)
+3. [博客园 添加 aplayer - 游侠舒迟 - 博客园 (cnblogs.com)](https://www.cnblogs.com/hustshu/p/14751455.html)
+
+
+
+## 使用tags-aplayer
+
+编辑站点配置文件,添加
+
+```yaml
+aplayer:
+  meting: true
+```
+
+在文章中添加
+
+```
+{% meting "2673736708" "netease" "playlist" "theme:#FF0000" "mode:circulation" "mutex:true" "listmaxheight:800px" "preload:auto" %}
+```
+
+### 参考
+
+1. [官方文档](https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2FMoePlayer%2Fhexo-tag-aplayer%2Fblob%2Fmaster%2Fdocs%2FREADME-zh_cn.md) 
+2. [Hexo添加Aplayer播放器](https://www.jianshu.com/p/f1005ae09e5a)
 
 
 

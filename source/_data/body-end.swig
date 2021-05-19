@@ -20,25 +20,23 @@
 {# 雪花飘落特效 #}
 {% if theme.snow.enabled and not is_index %}
   {% if theme.snow.type == "hexo" %}
-	<script type="text/javascript">
+  	<script type="text/javascript">
 	  var windowWidth = $(window).width();
 	  if (windowWidth > 480) {
-		document.write('<script type="text/javascript" src="/js/src/hexo.js"><\/script>');
+		document.write('<script type="text/javascript" src="/js/src/hexo.js"></script>');
 	  }
 	</script>
   {% elseif theme.snow.type == "circle" %}}
 	<script type="text/javascript">
 	  var windowWidth = $(window).width();
 	  if (windowWidth > 480) {
-		document.write('<script type="text/javascript" src="/js/src/circle.js"><\/script>');
+		document.write('<script type="text/javascript" src="/js/src/circle.js"></script>');
 	  }
 	</script>
-  {% elseif theme.snow.type == "sakura" %}}
-    <script type="text/javascript" src="/js/src/sakura.js"><\/script>
-  {% endif %}
+    {% elseif theme.snow.type == "sakura" %}}
+		<script type="text/javascript" src="/js/src/sakura.js"></script>
+  {% endif %}  
 {% endif %}
-
-<script></script>
 
 
 
