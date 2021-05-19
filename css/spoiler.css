@@ -1,19 +1,20 @@
 .spoiler {
     margin: 5px 0;
     padding: 0 15px;
-    border: 1px solid #E5E5E5;
+    border: 1px solid #fff);
+	border-left: 3px solid #64ceaa;
     position: relative;
     clear: both;
     border-radius: 3px;
 }
 
 .spoiler .spoiler-title {
-    background: #E5E5E5;
+    background: #fff;
     margin: 0 -15px;
     padding: 5px 15px;
-    color: #353535;
+    color: #000;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 20px;
     display: block;
     cursor: pointer;
 }
@@ -23,11 +24,11 @@
 }
 
 .spoiler.collapsed .spoiler-title:before {
-    content: "Show ";
+    content: "▼ ";
 }
 
 .spoiler.expanded .spoiler-title:before {
-    content: "Hide ";
+    content: "▲ ";
 }
 
 .spoiler .spoiler-content {
