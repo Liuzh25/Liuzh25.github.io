@@ -22,7 +22,7 @@
 
 {# 音乐播放器 #}
 <link rel="stylesheet" href="/aplayer/APlayer.min.css">
-<div id="aplayer" class="aplayer"  data-id="2673736708" data-server="netease" data-type="playlist" data-fixed="true" data-listfolded="true" data-order="random" data-theme="#F58EA8"></div>
+<div id="aplayer" class="aplayer"  data-autoplay="true" data-id="2673736708" data-server="netease" data-type="playlist" data-fixed="true" data-listfolded="true" data-order="random" data-theme="#F58EA8"></div>
 <script type="text/javascript" src="/aplayer/APlayer.min.js"></script>
 <script src="https://unpkg.com/meting@1.2/dist/Meting.min.js"></script>
 
