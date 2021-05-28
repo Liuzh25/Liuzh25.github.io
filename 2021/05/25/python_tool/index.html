@@ -30,7 +30,7 @@
 <meta property="og:description" content="装饰器">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-05-25T13:22:59.000Z">
-<meta property="article:modified_time" content="2021-05-25T13:24:32.742Z">
+<meta property="article:modified_time" content="2021-05-27T09:54:47.682Z">
 <meta property="article:author" content="谨礼">
 <meta property="article:tag" content="note">
 <meta property="article:tag" content="python">
@@ -299,10 +299,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-05-25 21:22:59 / 修改时间：21:24:32" itemprop="dateCreated datePublished" datetime="2021-05-25T21:22:59+08:00">2021-05-25</time>
+              <time title="创建时间：2021-05-25 21:22:59" itemprop="dateCreated datePublished" datetime="2021-05-25T21:22:59+08:00">2021-05-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-27 17:54:47" itemprop="dateModified" datetime="2021-05-27T17:54:47+08:00">2021-05-27</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -327,14 +333,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>8</span>
+              <span>3.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -348,7 +354,116 @@
       
         <h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><span id="more"></span>
 
-<h2 id="形参与实参"><a href="#形参与实参" class="headerlink" title="形参与实参"></a>形参与实参</h2><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+<h2 id="储备知识"><a href="#储备知识" class="headerlink" title="储备知识"></a>储备知识</h2><ol>
+<li><p>可变参数<code>*args</code>,<code>**kwargs</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">wrapper</span>(<span class="params">*args, **kwargs</span>):</span>  <span class="comment"># wrapper()&lt;==&gt;index()</span></span><br><span class="line">    index(*args, **kwargs)</span><br></pre></td></tr></table></figure></li>
+<li><p>名称空间与作用域</p>
+<p>名称空间的”嵌套关系”是在函数定义阶段,即检测语法的时候确定的</p>
+</li>
+<li><p>函数对象</p>
+<ul>
+<li>函数可以作为参数传入另外一个函数 </li>
+<li>函数的返回值可以是一个函数</li>
+</ul>
+</li>
+<li><p>函数的嵌套定义</p>
+</li>
+<li><p>闭包函数</p>
+</li>
+</ol>
+<h2 id="装饰器-1"><a href="#装饰器-1" class="headerlink" title="装饰器"></a>装饰器</h2><p><strong>装饰器</strong>就是在<strong>不修改</strong>被装饰对象<strong>源代码和调用方式</strong>的前提下为被装饰对象<strong>添加额外的功能</strong></p>
+<ul>
+<li>“装饰”代指为被装饰对象添加新的功能</li>
+<li>“器”代指器具/工具</li>
+<li>装饰器与被装饰的对象均可以是任意可调用对象。可调用对象有函数，方法或者类</li>
+<li>装饰器经常用于有切面需求的场景，比如：插入日志、性能测试、事务处理、缓存、权限校验等应用场景，装饰器是解决这类问题的绝佳设计，</li>
+<li>有了装饰器，就可以抽离出大量与函数功能本身无关的雷同代码并继续重用。</li>
+</ul>
+<h2 id="无参装饰器"><a href="#无参装饰器" class="headerlink" title="无参装饰器"></a>无参装饰器</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outter</span>(<span class="params">func</span>):</span>  <span class="comment"># 装饰器</span></span><br><span class="line">     <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span>(<span class="params">*args, **kwargs为</span>):</span>  <span class="comment"># *args, **kwargs为源文件提供可拓展参数</span></span><br><span class="line">         start = time.time</span><br><span class="line">         res = func(*args, **kwargs)  <span class="comment"># func提高装饰器重用率</span></span><br><span class="line">         stop = time.time</span><br><span class="line">         <span class="keyword">return</span> res  <span class="comment"># 添加返回值</span></span><br><span class="line"> 	<span class="keyword">return</span> wrapper  <span class="comment"># 使wrapper能够被全局调用</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@outter </span><span class="comment"># 语法糖 index = outter(index)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>(<span class="params">x, y, z</span>):</span>  <span class="comment"># 源程序</span></span><br><span class="line">     time.sleep(<span class="number">3</span>)</span><br><span class="line">     <span class="built_in">print</span>(<span class="string">&#x27;index %s %s %s&#x27;</span> %(x, y, z))</span><br><span class="line">     <span class="keyword">return</span> <span class="number">123</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># def outter(func):  # 装饰器</span></span><br><span class="line"><span class="comment">#  def wrapper(*args, **kwargs为):  # *args, **kwargs为源文件提供可拓展参数</span></span><br><span class="line"><span class="comment">#      start = time.time</span></span><br><span class="line"><span class="comment">#      res = func(*args, **kwargs)  # func提高装饰器重用率</span></span><br><span class="line"><span class="comment">#      stop = time.time</span></span><br><span class="line"><span class="comment">#      return res  # 添加返回值</span></span><br><span class="line"><span class="comment">#  return wrapper  # 使wrapper能够被全局调用</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># index = outter(index)  # 重新赋值index函数,确保函数调用方式不变</span></span><br><span class="line">index(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>思路:</p>
+<ul>
+<li>直接在index上改.<strong>改变源代码</strong></li>
+<li>创建新函数封装index函数与新功能.<strong>不改变源代码,改变调用方式(降低代码冗余,并为index提供可拓展参数)</strong></li>
+<li>将新函数改为闭包函数.<strong>不改变源代码,不改变调用方式(写活闭包函数传入程序)</strong></li>
+<li>进一步伪装闭包函数与原函数相同.<strong>(添加返回值)</strong></li>
+<li>简化代码.<strong>(为装饰器增加语法糖,将装饰器提到最前面,保证语法糖的引用)</strong></li>
+</ul>
+<p>装饰器在保持与源代码<strong>提供相同功能的基础</strong>上,为源代码<strong>添加了新功能</strong>,提供了<strong>可拓展的参数</strong>,还提升了自身的<strong>重用率</strong></p>
+<h2 id="语法糖"><a href="#语法糖" class="headerlink" title="语法糖"></a>语法糖</h2><ul>
+<li><code>@name</code>无括号,等价于<code>func = name(func)</code></li>
+<li><code>@name()</code>有括号,等价于<code>f1 = name()</code> =&gt; <code>func = f1(func)</code></li>
+</ul>
+<h2 id="无参装饰器模板"><a href="#无参装饰器模板" class="headerlink" title="无参装饰器模板"></a>无参装饰器模板</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outter</span>(<span class="params">func</span>):</span></span><br><span class="line"> <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span>(<span class="params">*args, **kwargs</span>):</span></span><br><span class="line">     <span class="comment"># 1. 调用原函数</span></span><br><span class="line">     <span class="comment"># 2. 为其增加新功能</span></span><br><span class="line">     res = func(*args, **kwargs)</span><br><span class="line">     <span class="keyword">return</span> res</span><br><span class="line"> <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"><span class="meta">@outter</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">a, b</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">	<span class="keyword">return</span> abc</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="有参装饰器"><a href="#有参装饰器" class="headerlink" title="有参装饰器"></a>有参装饰器</h2><ul>
+<li><p>由于语法糖的@的限制,outter函数只能有一个参数,并且该参数只用来接受被装饰对象的内存地址.</p>
+</li>
+<li><p>而wrapper函数的参数由原函数控制,无法改变.</p>
+</li>
+<li><p>因此, 需要第三层嵌套关系来为装饰器增加的功能提供参数</p>
+</li>
+</ul>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">auth</span>(<span class="params">db_type</span>)</span></span><br><span class="line"><span class="function">	<span class="title">def</span> <span class="title">outter</span>(<span class="params">func</span>):</span>  <span class="comment"># 装饰器</span></span><br><span class="line">        <span class="comment"># 需要参数db_type</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span>(<span class="params">*args, **kwargs为</span>):</span>  <span class="comment"># *args, **kwargs为源文件提供可拓展参数</span></span><br><span class="line">            <span class="keyword">if</span> db_type == <span class="string">&quot;abc&quot;</span>  <span class="comment"># 需要参数db_type</span></span><br><span class="line">            	<span class="keyword">pass</span></span><br><span class="line">    	<span class="keyword">return</span> wrapper  <span class="comment"># 使wrapper能够被全局调用</span></span><br><span class="line">    <span class="keyword">return</span> outter</span><br><span class="line"></span><br><span class="line"><span class="meta">@auth(<span class="params">db_type</span>)  </span><span class="comment"># 等价于@outter</span></span><br><span class="line"><span class="comment"># @outter # 语法糖 index = outter(index)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>(<span class="params">x, y, z</span>):</span>  <span class="comment"># 源程序</span></span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;index %s %s %s&#x27;</span> %(x, y, z))</span><br><span class="line">    <span class="keyword">return</span> <span class="number">123</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">index(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>思路:</p>
+<ul>
+<li> func=outter(func)  ==&gt;  outter=auth(db_type),func=outter(func)</li>
+<li>@outter  ==&gt;  @auth(db_type)</li>
+</ul>
+<h2 id="有参装饰器模板"><a href="#有参装饰器模板" class="headerlink" title="有参装饰器模板"></a>有参装饰器模板</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">auth</span>(<span class="params">db_type</span>)</span></span><br><span class="line"><span class="function">    <span class="title">def</span> <span class="title">outter</span>(<span class="params">func</span>):</span></span><br><span class="line">         <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span>(<span class="params">*args, **kwargs</span>):</span></span><br><span class="line">             <span class="comment"># 1. 调用原函数</span></span><br><span class="line">             <span class="comment"># 2. 为其增加新功能</span></span><br><span class="line">             res = func(*args, **kwargs)</span><br><span class="line">             <span class="keyword">return</span> res</span><br><span class="line">         <span class="keyword">return</span> wrapper</span><br><span class="line">	<span class="keyword">return</span> outter</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@auth(<span class="params">db_type</span>)  </span><span class="comment"># 等价于@outter</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">a, b</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">	<span class="keyword">return</span> abc</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li><p>开放封闭原则</p>
+<ul>
+<li><strong>对扩展是开放的，而对修改是封闭的</strong></li>
+<li>软件包含的所有功能的源代码以及调用方式，都应该避免修改</li>
+<li>对于上线后的软件，新需求或者变化又层出不穷，我们必须为程序提供扩展的可能性</li>
+</ul>
+</li>
+<li><p>多个装饰器语法糖,顺序从下往上使用装饰器</p>
+</li>
+<li><p>为装饰器内嵌函数<code>wrapper</code>添加装饰器<code>wraps</code>,使函数<code>wrapper</code>的属性等于原函数的属性</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> wraps  <span class="comment"># 引用wraps </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outter</span>(<span class="params">func</span>):</span></span><br><span class="line"><span class="meta">    @wraps(<span class="params">func</span>)  </span><span class="comment"># 加括号并添加原函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span>(<span class="params">*args, **kwargs</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="comment"># wrapper.__name__ = 原函数.__name__</span></span><br><span class="line">    <span class="comment"># wrapper.__doc__ = 原函数.__doc__</span></span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br></pre></td></tr></table></figure></li>
+<li><p>有参装饰器小知识:</p>
+<ul>
+<li><p>使用语法糖的优势是本来每次调用函数都要在调用前添加一行index=auth(db_type)(index),现在将这行代码放在函数体里</p>
+</li>
+<li><p>第二层不行是因为要用语法糖,而语法糖有这么个固定语法.第三层其实和语法糖没关系了,它不受语法糖的语法的限制</p>
+</li>
+<li><p>为什么语法糖参数有限制?我觉得是因为语法糖每个原函数都要写,而装饰器只用写一次.如果有参装饰器用的多,确实语法糖无限制好,但估计是无参装饰器用的多</p>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h1><h2 id="迭代器-1"><a href="#迭代器-1" class="headerlink" title="迭代器"></a>迭代器</h2><p><strong>迭代器</strong>即用来<strong>迭代取值的工具</strong>，而迭代是重复反馈过程的活动，其目的通常是为了逼近所需的目标或结果，每一次<strong>对过程的重复</strong>称为一次“迭代”，而<strong>每一次迭代得到的结果会作为下一次迭代的初始值</strong>,单纯的<strong>重复并不是迭代</strong>,例遍历</p>
+<p>通过索引的方式进行迭代取值，实现简单，但仅适用于序列类型：字符串，列表，元组。对于没有索引的字典、集合等非序列类型，必须找到一种<strong>不依赖索引来进行迭代取值的方式</strong>，这就用到了迭代器。</p>
+<h2 id="可迭代对象-Iterable"><a href="#可迭代对象-Iterable" class="headerlink" title="可迭代对象(Iterable)"></a>可迭代对象(Iterable)</h2><p><strong>内置有<code>__iter__</code>方法的对象</strong>都是可迭代对象，<strong>字符串、列表、元组、字典、集合、打开的文件</strong>都是可迭代对象</p>
+<p><strong>迭代取值:</strong></p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># i = obj.__iter__()</span></span><br><span class="line">i = <span class="built_in">iter</span>(obj)  <span class="comment"># i 是迭代器对象(Iterator),print(obj.__iter__().__next__())将只取第一个值</span></span><br><span class="line"><span class="comment"># print(i.__next__())</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">next</span>(i))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">next</span>(i))</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="迭代器对象"><a href="#迭代器对象" class="headerlink" title="迭代器对象"></a>迭代器对象</h2><p>调用obj.<strong>iter</strong>()方法返回的结果就是一个<strong>迭代器对象(Iterator)<strong>。迭代器对象是内置有</strong>iter</strong>和<strong>next</strong>方法的对象，<strong>打开的文件本身就是一个迭代器对象</strong>，执行<strong>迭代器对象.iter()方法得到的仍然是迭代器本身</strong>，而执行<strong>迭代器.next()方法就会计算出迭代器中的下一个值</strong>。</p>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><ol>
+<li><p> <code>i</code> 是<strong>迭代器对象(Iterator)</strong>, <code>print(obj.__iter__().__next__())</code>将只取第一个值</p>
+</li>
+<li><p>调用obj.<strong>iter</strong>()方法返回的结果就是一个<strong>迭代器对象(Iterator)<strong>。执行</strong>迭代器对象.iter()方法得到的仍然是迭代器本身</strong>，而执行<strong>迭代器.next()方法就会计算出迭代器中的下一个值</strong></p>
+</li>
+<li><p>当<strong>取完值时再次执行</strong><code>next(i)</code>将抛出<code>StopIteration</code>异常</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:  <span class="comment"># try/except语句用来检测try语句块中的错误，从而让except语句捕获异常信息并处理。</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="built_in">next</span>(i))</span><br><span class="line">    <span class="keyword">except</span> StopIteration:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>try的工作原理</strong>是，当开始一个try语句后，python就在当前程序的上下文中作标记，这样当异常出现时就可以回到这里，try子句先执行，接下来会发生什么依赖于执行时是否出现异常。</p>
+<ul>
+<li>如果当try后的语句执行时<strong>发生异常</strong>，python就<strong>跳回到try并执行第一个匹配该异常的except子句</strong>，异常处理完毕，控制流就通过整个try语句（除非在处理异常时又引发新的异常）。</li>
+<li>如果当try后的语句执行时<strong>发生异常</strong>，python却<strong>没有匹配的except子句，异常将被递交到上层的try，或者到程序的最上层（这样将结束程序，并打印默认的出错信息）</strong>。</li>
+<li>如果在try子句执行时<strong>没有发生异常</strong>，python将<strong>执行else语句后的语句（如果有else的话）</strong>，然后控制流通过整个try语句。</li>
+</ul>
+</li>
+</ol>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
     
@@ -499,7 +614,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">装饰器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BD%A2%E5%8F%82%E4%B8%8E%E5%AE%9E%E5%8F%82"><span class="nav-number">1.1.</span> <span class="nav-text">形参与实参</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">装饰器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%82%A8%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.1.</span> <span class="nav-text">储备知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8-1"><span class="nav-number">1.2.</span> <span class="nav-text">装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E5%8F%82%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="nav-number">1.3.</span> <span class="nav-text">无参装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E7%B3%96"><span class="nav-number">1.4.</span> <span class="nav-text">语法糖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E5%8F%82%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.5.</span> <span class="nav-text">无参装饰器模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E5%8F%82%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="nav-number">1.6.</span> <span class="nav-text">有参装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E5%8F%82%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.7.</span> <span class="nav-text">有参装饰器模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.8.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">迭代器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8-1"><span class="nav-number">2.1.</span> <span class="nav-text">迭代器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1-Iterable"><span class="nav-number">2.2.</span> <span class="nav-text">可迭代对象(Iterable)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.3.</span> <span class="nav-text">迭代器对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-1"><span class="nav-number">2.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -662,13 +777,13 @@ show_date_time();
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">147k</span>
+    <span title="站点总字数">151k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:13</span>
+    <span title="站点阅读时长">2:17</span>
 </div>
 
         
